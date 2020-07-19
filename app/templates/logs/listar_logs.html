@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>Listagem de Erros</h1>
+{% for log in logs %}
+<div class="card mb-3">
+    <div class="card-header">
+        Level: {{ log.get_level_display }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'detalhar_log' log.id %}">{{ log.descricao }}</a></h5>
+        <p class="card-text">Origem do Erro: {{ log.origem }}</p>
+        <p class="card-text">{{ log.data_registro }}</p>
+        <p class="card-text">Eventos: {{ log.eventos }}</p>
+        <hr>
+        <a href="{% url 'editar_log' log.id %}">Alterar Log</a>
+        <a href="{% url 'remover_log' log.id %}">Remover Log</a>
+    </div>
+</div>
+{% endfor %}
+<a href="{% url 'cadastrar_log' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Erro"></a>
+{% endblock conteudo %}

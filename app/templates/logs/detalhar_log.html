@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h2>{{ det_log.origem }} em {{ det_log.data_registro }}</h2>
+<p>Título: {{ det_log.descricao }}</p>
+<p>Eventos: {{ det_log.eventos }}</p>
+<p>{{ det_log.get_level_display }}</p>
+<p>Coletado por: {{ det_log.usuario }}</p>
+<p>Detalhes: {{ det_log.detalhes }}</p>
+<hr>
+<a href="{% url 'listar_logs' %}"><input type="button" class="btn btn-primary mb-3" value="Voltar"></a>
+{% endblock conteudo %}
